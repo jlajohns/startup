@@ -9,3 +9,13 @@ Have you ever struggled to keep track of tasks? Do responsibilities get forgotte
 - Task completion history persistently stored 
 
 ![Sketch](image.png)
+
+## Technology 
+The following technology will be used in the I'm On It application.
+
+- HTML: Three HTML pages will be used. One for login, for homepage, and task history.
+- CSS: application styling that adjusts based on screen size, and uses pleasing color and contrast choices. 
+- JavaScript: Provices login, task display, display other user's tasks 
+- Service: Backend endpoints to: addTask, updateTask, deleteTask
+- WebSocket: Shows who has done what tasks in real time, allows all users to update task list 
+- React: Application uses React web framework 

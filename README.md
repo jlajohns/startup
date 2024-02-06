@@ -25,8 +25,10 @@ The following technology will be used in the I'm On It application.
 - Tags: properly used the html tags 
 - Links: links to login on index page, and link on login to taskhistory
 - Text: Each task action is represented by a textual description
-- Images: Image on index.html
 - 3rd party service calls: placeholder button for API to google calendar
-- Websocket: Placeholder showing real time updates on task actions for users logged in 
+- Images: Image on index.html
+- Login: login placeholder on login.html
 - Database data: placeholder for task history list in taskhistory.html
+- Websocket: Placeholder showing real time updates on task actions for users logged in 
 - Deployed simon to website (https://simon.jascinda.click)
+- GitHub: displayed in footer on my login and index htmls 

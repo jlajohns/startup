@@ -34,3 +34,11 @@ printf "hello world" > test.txt (prints to a newly created txt file)
 
 While usually you are using keystrokes like chords (the combination pressed together illicits a response) vim is melodic, meaning the pattern you press matters 
 
+# HTML
+- start each page with <html> and within that you can add format items to then build off in design (CSS) and function (JavaScript)
+- <li> is list
+- <button> makes a button that you can then put words in 
+- <header> is a header
+- <footer> is a footer
+- <h1> an example of a size of header, this can be changed 
+

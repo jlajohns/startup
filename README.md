@@ -6,7 +6,7 @@ Have you ever struggled to keep track of tasks? Do responsibilities get forgotte
 - Display tasks to do and those completed
 - Ability for users to create or delete tasks 
 - Update tasks as they are added, completed, or deleted
-- Task completion history persistently stored 
+- Task completion history persistently stored
 
 ![Sketch](image.png)
 
@@ -19,3 +19,14 @@ The following technology will be used in the I'm On It application.
 - Service: Backend endpoints to: addTask, updateTask, deleteTask
 - WebSocket: Shows who has done what tasks in real time, allows all users to update task list 
 - React: Application uses React web framework 
+
+## HTML Assignment 
+- HTML pages: Three pages, one that respresent the ability to login, an index and taskhistory
+- Tags: properly used the html tags 
+- Links: links to login on index page, and link on login to taskhistory
+- Text: Each task action is represented by a textual description
+- Images: Image on index.html
+- 3rd party service calls: placeholder button for API to google calendar
+- Websocket: Placeholder showing real time updates on task actions for users logged in 
+- Database data: placeholder for task history list in taskhistory.html
+- Deployed simon to website (https://simon.jascinda.click)

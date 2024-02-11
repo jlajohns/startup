@@ -1,0 +1,10 @@
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-bottom: thick #6ba3f6 solid;
+}
+body {
+    font-family: sans-serif;
+  }
+  main {
+    background: hsl(93, 32%, 35%);
+  }

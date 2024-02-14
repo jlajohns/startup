@@ -32,3 +32,11 @@ The following technology will be used in the I'm On It application.
 - Websocket: Placeholder showing real time updates on task actions for users logged in 
 - Deployed simon to website (https://simon.jascinda.click)
 - GitHub: displayed in footer on my login and index htmls 
+
+## CSS Assignment
+- Header, footer, main content body: properly styled using CSS fonts, color, and spacing. 
+- Navication elements: Styled using fonts, color, and boxed color
+- Responsive window sizing: Implemented based on lesson directions
+- CSS application elements: proper use of color, shapes, style choices. 
+- Text content: aesthetic font that matches headers, spacing, color 
+- Image: properly styled using CSS, added border and moved it to the middle

@@ -1,21 +1,40 @@
 html{
     background-color: rgb(171, 205, 172);
 }
+/*  Headers */
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
+h4{
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+/*  Add Task Styling */
+
+li{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
 main{
     background-color: hsl(93, 32%, 35%);
+}
+/*  Tasks and Task History Styling */
+
+option {
+    color: lavender;
 }
 section{
     background-color: lavender;
 }
 p{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-li{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration-line: underline;
+    text-decoration-color: black;
 }
 tr{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

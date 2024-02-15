@@ -1,5 +1,5 @@
 html{
-    background-color: rgb(171, 205, 172);
+    background-color: #d3d19d;
 }
 /*  Headers */
 h1{
@@ -26,10 +26,10 @@ main{
 /*  Tasks and Task History Styling */
 
 option {
-    color: lavender;
+    color:  #D391FA;
 }
 section{
-    background-color: lavender;
+    background-color:  #D391FA;
 }
 p{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

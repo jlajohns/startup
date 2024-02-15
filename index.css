@@ -1,26 +1,32 @@
 
 html{
-    background-color: rgb(171, 205, 172);
+    background-color: #d3d19d;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 h1{
-    color:hsl(94, 32%, 27%)
+    color:hsl(94, 32%, 27%);
 }
 h3{
-    color: rgb(108, 108, 153);
+    color: black;
 }
 main{
     background-color: hsl(93, 32%, 35%);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 menu{
-    background-color: rgb(178, 178, 220);
+    background-color: #D391FA;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: block;
 }
+
+.block {
+    width: 100%;
+    height: auto;
+}
 div {
-    border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    width: 150px;
+  
   }
+
+  

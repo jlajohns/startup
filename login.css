@@ -1,9 +1,9 @@
 html{
-  background-color: rgb(171, 205, 172);
+  background-color: #d3d19d;
 }
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-bottom: thick #6ba3f6 solid;
+    border-bottom: thick #D391FA solid;
     text-align: center;
 }
 body {

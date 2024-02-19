@@ -42,3 +42,47 @@ While usually you are using keystrokes like chords (the combination pressed toge
 - <footer> is a footer
 - <h1> an example of a size of header, this can be changed 
 
+
+# JavaScript 
+- === gives equality representation like you would expect in other languages
+    - example: console.log(0 === true)
+- falsy
+    - false, 0, -1, '', NaN, null, undefined
+- truthy 
+    - !falsy
+- ex: if ((!false && undefined) || (true && !0))
+    - first part turns out false, second part true: whole thing prints true 
+- for (let i =1; i < 3; i++>)
+- switch statements 
+    - switching on some variable, cases on what that variable could equal 
+    - look up how to do this 
+    - breaks are necessary 
+    - one of the author of javascript also wrote go 
+- functions 
+    - functions are primative types 
+        - function functions() {
+            debugger;
+        }
+        - inner functions:
+        function f(){
+            return 1;
+        }
+        console.log(f())
+        - anonymous functions
+            - f (already declared f above) = function (i) {
+                return i; 
+            };
+            console.log(f(3));
+
+    - optional parameters 
+        - f = function (a, b, c = rat) {
+            return [a, b, c];
+        }
+        console.log(f(1)); 
+        it returns [1, undefined, rat]
+    - arrow functions 
+        - const arrow = () => 1;
+        - arrow() returns 1 
+    - arrow with block? (look up how to do this)
+    - closures 
+    - 

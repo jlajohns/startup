@@ -36,7 +36,7 @@ The following technology will be used in the I'm On It application.
 ## CSS Assignment
 - Header, footer, main content body: properly styled using CSS fonts, color, and spacing. 
 - Navication elements: Styled using fonts, color, and boxed color
-- Responsive window sizing: Implemented based on lesson directions
+- Responsive window sizing: Implemented based on lesson directions for media responsiveness, also made large picture inline formatted
 - CSS application elements: proper use of color, shapes, style choices. 
 - Text content: aesthetic font that matches headers, spacing, color 
 - Image: properly styled using CSS, added border and moved it to the middle

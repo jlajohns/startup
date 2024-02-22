@@ -86,3 +86,11 @@ While usually you are using keystrokes like chords (the combination pressed toge
     - arrow with block? (look up how to do this)
     - closures 
     - 
+- DOM
+
+- Promises:
+    - In JavaScript, a Promise is an object that will produce a single value some time in the future. If the promise is successful, it will produce a resolved value, but if something goes wrong then it will produce a reason why the promise failed. The possible outcomes here are similar to that of promises in real life.
+    - The progress of a promise can either be:
+        - pending: the default state 
+        - fulfilled: this is the state of a success (.then())
+        - rejected: this is the state of a failed promise (.catch())

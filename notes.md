@@ -94,3 +94,10 @@ While usually you are using keystrokes like chords (the combination pressed toge
         - pending: the default state 
         - fulfilled: this is the state of a success (.then())
         - rejected: this is the state of a failed promise (.catch())
+
+- Async/Await:
+    - The word “async” before a function means one simple thing: a function always returns a promise. Other values are wrapped in a resolved promise automatically.
+
+    - The keyword await makes JavaScript wait until that promise settles and returns its result.
+
+    

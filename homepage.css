@@ -1,0 +1,39 @@
+html{
+  background-color: #d3d19d;
+}
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: thick hsl(93, 32%, 35%) solid;
+    text-align: center;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  li{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+option {
+  color:  #D391FA;
+}
+section{
+  background-color:  #D391FA;
+}
+p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration-line: underline;
+  text-decoration-color: black;
+}
+tr{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+main{
+    background-color: hsl(93, 32%, 35%);
+}
+
+  main {
+    background: hsl(93, 32%, 35%);
+  }

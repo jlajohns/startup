@@ -46,3 +46,5 @@ The following technology will be used in the I'm On It application.
 - JavaScript support for future database data: Task History shows a database of tasks that future users have done (keeps a log of what was completed)
 - Javascript support for future WebSocket: Users can simultaneously Add, Delete, and Complete tasks to group projects (these features are shown using mock data in the homepage in active tasks)
 - Javascript support for applications interaction logic: Taskhistory has javascript support that shows a certain amount of tasks at a time, the user can move forward and back. Task history results list has buttons to increase or decrease the amount of results shown. The active tasks have working delete and complete buttons (the complete adds it to task history, while delete removes the task altogether). Currently working on JavaScript support for adding individual tasks. 
+- Deployed updated simon website to (https://simon.jascinda.click)
+- Deployed my website to (https://startup.jascinda.click)

@@ -1,32 +1,51 @@
 <html>
-  <script src="index.js"></script>
-  <head><meta name="viewport" content="width=device-width,initial-scale=1" /></head>
-<body>
-    <h1>I'm On It!</h1>
+    <script src="index.js"></script>
+    <head><meta name="viewport" content="width=device-width,initial-scale=1" /></head>
+<main>
+    <h1>Welcome to 
+        <span style="color:#D391FA">I'm On It!</mark></h1>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <nav>
-      <menu>
-        <h3>Navigation</h3>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Log In</a></li>
-        <li><a href="taskhistory.html">Task History</a></li>
-      </menu>
-    </nav>
+    <p>Login to add or complete tasks</p>
+    <!--Login placeholder, including user name display-->
+    <form method="get" action="homepage.html">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name here" />
+        <label for="password">Password</label>
+        <input type="text" id="password" placeholder="Your password here" />
+        <button type="submit" onclick="login()">Login</button>
+    </form>
+</main>
 
-    <main>
-      <div id="picture" class="inline">
-        <img class="block" src="OnIt.png" alt="random" />
-      </div>
-    </main>
+<main>
+    <div id="picture" class="inline">
+      <img class="block" src="OnIt.png" alt="random" />
+    </div>
+  </main>
 
+<!--GitHub with username as footer on all pages-->
+<footer>
+    <hr />
+    <span class="text-reset">Jascinda Croft</span>
+    <br />
+    <a href="https://github.com/jlajohns">GitHub</a>
+  </footer>
+  </html>
 
-    <footer>
-      <hr />
-      <span class="text-reset">Jascinda</span>
-      <br />
-      <a href="https://github.com/jlajohns">GitHub</a>
-    </footer>
-  </body>
-</html>
+  <!--Javascript for the login-->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
 
+    // Get the values from the form
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
+    // Check if username and password are correct (this is a basic example)
+    if (username === "admin" && password === "password") {
+        alert("Login successful!");
+        // Redirect to another page or perform any other action after successful login
+    } else {
+        alert("Incorrect username or password. Please try again.");
+    }
+});
+  </script>

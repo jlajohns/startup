@@ -37,3 +37,11 @@ main{
   main {
     background: hsl(93, 32%, 35%);
   }
+
+.deletebutton {
+  color: red;
+}
+
+.completebutton {
+  color:hsl(93, 32%, 35%)
+}

@@ -1,72 +1,44 @@
 <html>
   <head><meta name="viewport" content="width=device-width,initial-scale=1" /></head>
   <h1>
-    Tasks
+    Task History
   </h1>
 <main>
   <link rel="stylesheet" type="text/css" href="taskhistory.css">
 
-  <h4>Add Task to Active Tasks</h4>
-  <li>
-    <label for="inserttask">Task: </label>
-    <textarea id="inserttask" name="varinserttask"></textarea>
-  </li>
-
-  <li>
-    <label for="select">Select: </label>
-    <select id="select" name="varSelect">
-      <option>project1</option>
-      <option selected>project2</option>
-      <option>project3</option>
-    </select>
-  </li>
-
-  <!--This button will connect to an API for google calendar-->
-<label for="file"> Add to Google Calendar</label>
-<button type="submit">Google Calendar</button>
-
-  <!--The active tasks will have websockets to live update when users are on the website-->
-    <section>
-      <p>Active Tasks</p>
-      <ul>
-        <p>CS260</p>
-        <li>Task</li>
-        <li>Task</li>
-        <li>Task</li>
-        <p>Neurobiology</p>
-        <li>Task</li>
-        <li>Task</li>
-        <li>Task</li>
-      </ul>
-    </section>
 
     <!--Database data placeholder showing content stored in the database-->
-    <main>
-      <h3>Task History</h3>
-      <table>
-        <thread>
-          <tr>
-            <th>Task</th>
-            <th>Project</th>
-            <th>Name</th>ß
-            <th>Date</th>
-          </tr>
-        </thread>
-        <tbody id="tasks">
-          <tr>
-            <td>Add API to website</td>
-            <td>CS260</td>
-            <td>Ethan</td>
-            <td>02/04/2024</td>
-          </tr>
-          <tr>
-            <td>Upload EKG measurements</td>
-            <td>Neurobiology</td>
-            <td>Jascinda</td>
-            <td>01/21/2024</td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
-  <script src="taskhistory.js"></script>
+      <main>
+        <button onclick="loadTaskhistory()">Refresh</button>
+        <button onclick="loadNextResults()">></button>
+        <button onclick="loadPrevResults()"><</button>
+        <button onclick="increaseResults()">+</button>
+        <button onclick="decreaseResults()">-</button>
+
+
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Project</th>
+              <th>Name</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="tasks">
+
+          </tbody>
+        </table>
+      </main>
+
+    <script src="taskhistory.js"></script>
+
+  <footer> 
+    <nav>
+    <menu>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="index.html">Log In</a></li>
+      <li><a href="taskhistory.html">Task History</a></li>
+    </menu>
+  </nav></footer>
     </html>

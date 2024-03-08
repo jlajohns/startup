@@ -12,6 +12,26 @@ function login() {
         }
         tasks.push(newTask);
     }
+const express = require('express');
+const app = express();
+
+const port = process.argv.length > 2 ? process.argv[2] : 3000;
+
+app.use(express.json());
+
+// Serve up the front-end static content housing
+
+// Router for service endpoints
+
+//endpoint for add new task (post)
+
+// endpoint for delete current task (delete)
+
+// endpoint for get taskhistory (get)
+
+// endpoint for complete task (post, delete)
+
+
     console.log(tasks);
     // let tasks = [{task: "Take Midterm", project: "CS260", name: "Ethan", date: "02/04/2024"} , {task: "Add API to startup", project: "CS260", name: "Jascinda", date: "03/23/2024"} ,{task: "Read chapter 25", project: "Neurobiology", name: "Jascinda", date: "03/01/2024"}];
     localStorage.setItem('tasks', JSON.stringify(tasks));

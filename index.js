@@ -22,13 +22,23 @@ app.use(express.json());
 // Serve up the front-end static content housing
 
 // Router for service endpoints
+var apiRouter = express.Router();
+app.use(`/api`, apiRouter);
 
 //endpoint for add new task (post)
+apiRouter.post('/task', (req, res) => {
+    tasks = updateTasks(req.body, tasks);
+    res.send(tasks);
+});
 
-// endpoint for delete current task (delete)
+
+// endpoint for delete current task (delete) (check if I did this right)
+apiRouter.delete('/delete', (_req, res));
 
 // endpoint for get taskhistory (get)
-
+apiRouter.get('/taskhistory', (_req, res) => {
+    res.send(taskhistory)
+});
 // endpoint for complete task (post, delete)
 
 

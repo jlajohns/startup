@@ -48,3 +48,14 @@ The following technology will be used in the I'm On It application.
 - Javascript support for applications interaction logic: Taskhistory has javascript support that shows a certain amount of tasks at a time, the user can move forward and back. Task history results list has buttons to increase or decrease the amount of results shown. The active tasks have working delete and complete buttons (the complete adds it to task history, while delete removes the task altogether). Currently working on JavaScript support for adding individual tasks. 
 - Deployed updated simon website to (https://simon.jascinda.click)
 - Deployed my website to (https://startup.jascinda.click)
+
+## Startup Service Assignment
+- 
+- Github startup repository displayed at bottom of my application home page
+- Updated README.md and notes
+- 
+- I created an HTTP service using Node.js and Express
+- 
+- 
+- backend provides service endpoints for (add task, delete task, complete task, taskhistory)
+- Frontend calls service endpoints (located in index.js)

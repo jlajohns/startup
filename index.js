@@ -13,7 +13,9 @@ function login() {
         tasks.push(newTask);
     }
 
-activeTasks = [];
+let activeTasks = [];
+let taskHistory = [];
+
 
 // set up express for the app
 const express = require('express');
@@ -31,23 +33,38 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 //endpoint for add new task (post)
-apiRouter.post('/task', (req, res) => {
-    tasks = updateTasks(req.body, tasks);
-    res.send(tasks);
+// apiRouter.post('/task', (req, res) => {
+//     tasks = updateTasks(req.body, tasks);
+//     res.send(tasks);
+// });
+
+// ACTIVE TASKS
+    // Add a new task
+apiRouter.post('/active-tasks', (req, res) => {
+    addToActiveTasks(req.body, activeTasks);
+    res.send();
 });
 
-
-// endpoint for delete current task (delete) (check if I did this right)
-apiRouter.delete('/delete', (_req, res));
-
-// endpoint for get taskhistory (get)
-apiRouter.get('/taskhistory', (_req, res) => {
-    res.send(taskhistory)
+    // delete a task
+    // expect array in body
+apiRouter.delete('/active-tasks', (req, res) => {
+    deleteFromActiveTasks(req.body, activeTasks);
+    res.send();
 });
-// endpoint for complete task (post, delete)
-apiRouter.post('/completetask', (req, res) => {
-    taskhistoryList = updateTaskList(req.body, taskhistoryList);
-    res.send(taskhistoryList);
+    // get a list of active tasks
+apiRouter.get('/active-tasks' , (req, res) => {
+    res.send(activeTasks);
+});
+// TASK HISTORY
+    // get a list of task history
+apiRouter.get('/task-history' , (req, res) => {
+    subsetTasks = getTaskHistory(req.body[0], req.body[1], taskHistory);
+    res.send(subsetTasks);
+});
+    // add an item to task history
+apiRouter.post('/task-history' , (req, res) => {
+    addToTaskHistory(req.body, taskHistory);
+    res.send();
 });
 
 // Return application default page if path is unknown
@@ -74,5 +91,22 @@ function updateTasks(newTask, tasks) {
 
 function completetask(task, taskhistory) {
     const taskId = req.body.id;
-    const completedTaskIndex = activeTasks.findIndex()
+    const completedTaskIndex = activeTasks.findIndex(task => task.id === taskId);
+
+}
+
+function addToActiveTasks(newTask, activeTasks) {
+    activeTasks.push(newTask);
+}
+
+function deleteFromActiveTasks(taskToDelete, activeTasks) {
+    activeTasks = activeTasks.filter(task => task.id !== taskToDelete.id)
+}
+
+function getTaskHistory(start, stop, taskHistory) {
+    return taskHistory.slice(start, stop);
+}
+
+function addToTaskHistory(task, taskHistory) {
+    taskHistory.push(task);
 }

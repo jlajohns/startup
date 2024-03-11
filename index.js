@@ -12,6 +12,10 @@ function login() {
         }
         tasks.push(newTask);
     }
+
+activeTasks = [];
+
+// set up express for the app
 const express = require('express');
 const app = express();
 
@@ -20,6 +24,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(express.json());
 
 // Serve up the front-end static content housing
+app.use(express.static('public'));
 
 // Router for service endpoints
 var apiRouter = express.Router();
@@ -40,6 +45,15 @@ apiRouter.get('/taskhistory', (_req, res) => {
     res.send(taskhistory)
 });
 // endpoint for complete task (post, delete)
+apiRouter.post('/completetask', (req, res) => {
+    taskhistoryList = updateTaskList(req.body, taskhistoryList);
+    res.send(taskhistoryList);
+});
+
+// Return application default page if path is unknown
+app.use((_req, res) => {
+    res.sendFile('index.html', {root: 'public'});
+});
 
 
     console.log(tasks);
@@ -52,3 +66,13 @@ apiRouter.get('/taskhistory', (_req, res) => {
     window.location.href = "index.html";
 }
 
+let tasks = [];
+function updateTasks(newTask, tasks) {
+    tasks.push(newTask);
+    return tasks;
+}
+
+function completetask(task, taskhistory) {
+    const taskId = req.body.id;
+    const completedTaskIndex = activeTasks.findIndex()
+}

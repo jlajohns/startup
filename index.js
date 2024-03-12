@@ -43,6 +43,7 @@ apiRouter.post('/taskhistory', (req, res) => {
     res.send();
 });
 
+
 // Return application default page if path is unknown
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
@@ -73,3 +74,4 @@ function getTaskHistory(start, stop, taskHistory) {
 function addToTaskHistory(task, taskHistory) {
     taskHistory.push(task);
 }
+

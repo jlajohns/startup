@@ -50,12 +50,11 @@ The following technology will be used in the I'm On It application.
 - Deployed my website to (https://startup.jascinda.click)
 
 ## Startup Service Assignment
-- 
+- both simon and my startup are deployed
 - Github startup repository displayed at bottom of my application home page
 - Updated README.md and notes
-- 
 - I created an HTTP service using Node.js and Express
-- 
-- 
+- Front end served up using Express static middleware (I did this!)
+- Front end calls third party service endpoints (button for date on homepage)
 - backend provides service endpoints for (add task, delete task, complete task, taskhistory)
-- Frontend calls service endpoints (located in index.js)
+- Frontend calls service endpoints (I did this on the appropriate js files) 

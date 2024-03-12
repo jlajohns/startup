@@ -1,8 +1,6 @@
 
-// Old deleteTask 
-
 var idGen = 0;
-
+// delete task text function with button click
 async function deleteTaskButton(button) {
     console.log("Deleting task!");
     var li = button.closest('li');
@@ -17,6 +15,7 @@ async function deleteTaskButton(button) {
     deleteTask(idObject);
 }
 
+// delete task function
 async function deleteTask(idObject) {
 
     try {
@@ -74,15 +73,6 @@ async function addTaskToHistory(task) {
 // function to add task to task history and delete from active when button is pressed
 function completeTask(button) {
 
-
-    // console.log("CompletedTask");
-    // let taskHistory = [];
-    // const TaskHistoryText = localStorage.getItem("tasks");
-    // if (TaskHistoryText) {
-    //     taskHistory = JSON.parse(TaskHistoryText);
-    // }
-    // console.log(taskHistory);
-
     var li = button.closest('li');
     var liGroup = button.parentNode.parentNode.previousElementSibling;
     var liGroupText = liGroup.innerText;
@@ -106,16 +96,6 @@ function completeTask(button) {
         date: "2/29/24"
     }
     addTaskToHistory(newTask);
-
-    // // localStorage.removeItem("tasks");
-    // localStorage.setItem("tasks", JSON.stringify(taskHistory));
-
-
-    // console.log(taskHistory);
-
-    // deleteTask(button);
-
-
 }
 
 
@@ -129,14 +109,10 @@ setInterval(() => {
         tasks = JSON.parse(TasksText);
     }
 
-    // console.log(tasks.length);
-    // console.log(tasks);
     var randomTaskNumber = Math.floor(Math.random() * tasks.length);
-    // console.log(randomTaskNumber);
-
 
     randomTaskText = tasks[randomTaskNumber];
-    // console.log(randomTaskText);
+
 
     var randomID = idGen;
     var taskObject = {
@@ -160,21 +136,18 @@ setInterval(() => {
     const neuroTaskList = document.querySelector('#neuroList');
     let tasks = [];
     const TasksText = localStorage.getItem("NeuroexampleTasks");
-    // console.log(TasksText);
+
     if (TasksText) {
         tasks = JSON.parse(TasksText);
     }
 
-    // console.log(tasks.length);
-    // console.log(tasks);
     var randomTaskNumber = Math.floor(Math.random() * tasks.length);
-    // console.log(randomTaskNumber);
+
 
     const newListItem = document.createElement('li');
 
     randomTaskText = tasks[randomTaskNumber];
-    // console.log(randomTaskText);
-    //newListItem.innerText = randomTaskText;
+
     var randomID = idGen;
     var taskObject = {
         id: randomID,
@@ -185,6 +158,14 @@ setInterval(() => {
     addTask(taskObject);
     neuroTaskList.innerHTML = `<li id=${randomID}><button class="deleteButton" onclick="deleteTaskButton(this)">Delete</button><button class="completebutton" onclick="completeTask(this)">Complete</button>${randomTaskText}</li>` + neuroTaskList.innerHTML;
 
-
-    // neuroTaskList.appendChild(newListItem);
 }, 5000)
+
+// third party socket
+
+async function ThirdParty() {
+    const response = await fetch("http://worldtimeapi.org/api/timezone/America/Denver");
+    const time = await response.json();
+    console.log(time);
+    const dateP = document.querySelector("#currentdate");
+    dateP.innerText = time.datetime;
+  }

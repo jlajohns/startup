@@ -4,10 +4,10 @@
 <main>
     <h1>Welcome to 
         <span style="color:#D391FA">I'm On It!</mark></h1>
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <p>Login to add or complete tasks</p>
     <!--Login placeholder, including user name display-->
-    <form method="get" action="taskhistory.html">
+    <form method="get" action="homepage.html">
         <label for="name">Name</label>
         <input type="text" id="name" placeholder="Your name here" />
         <label for="password">Password</label>
@@ -15,6 +15,12 @@
         <button type="submit" onclick="login()">Login</button>
     </form>
 </main>
+
+<main>
+    <div id="picture" class="inline">
+      <img class="block" src="OnIt.png" alt="random" />
+    </div>
+  </main>
 
 <!--GitHub with username as footer on all pages-->
 <footer>
@@ -41,5 +47,6 @@
     } else {
         alert("Incorrect username or password. Please try again.");
     }
+    // login();
 });
   </script>

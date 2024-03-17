@@ -163,7 +163,7 @@ setInterval(() => {
 // third party socket
 
 async function ThirdParty() {
-    const response = await fetch("http://worldtimeapi.org/api/timezone/America/Denver");
+    const response = await fetch("https://worldtimeapi.org/api/timezone/America/Denver");
     const time = await response.json();
     console.log(time);
     const dateP = document.querySelector("#currentdate");

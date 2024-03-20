@@ -46,4 +46,16 @@ const DB = require('./database.js');
 
 // set the cookie
 
+// getauth token for the provided credentials
+
+// deleteauth token if stored in cookie 
+
+// Getuser returns information about a user
+
+// secureApiRouter verifies credentials for endpoitns
+
+// ddefault error handler
+
+// setAuthcookie in the HTTP response 
+
 

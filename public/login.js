@@ -28,3 +28,22 @@ function taskHistoryLogin() {
 
 }
 
+// This is the start of the login stuff
+
+const DB = require('./database.js');
+
+// JSON middleware
+
+// Cookie parser middleware
+
+// serve up application static content
+
+// trust headers for ip address (look into this)
+
+// router for service endpoints
+
+// createAuth token for new user
+
+// set the cookie
+
+

@@ -28,17 +28,24 @@ function taskHistoryLogin() {
 
 }
 
+const cookieParser = require('cookie-parser');
 // This is the start of the login stuff
 
 const DB = require('./database.js');
 
+// might need service port command line?
+
 // JSON middleware
+app.use(express.json());
 
 // Cookie parser middleware
+app.use(cookieParser());
 
 // serve up application static content
+app.use(express.static('public'));
 
 // trust headers for ip address (look into this)
+app.set('trust proxy', true);
 
 // router for service endpoints
 
@@ -57,5 +64,15 @@ const DB = require('./database.js');
 // ddefault error handler
 
 // setAuthcookie in the HTTP response 
-
+function setAuthCookie(res, authToken) {
+    res.cookie(authCookieName, authToken, {
+      secure: true,
+      httpOnly: true,
+      sameSite: 'strict',
+    });
+  }
+  
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
 

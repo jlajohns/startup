@@ -1,4 +1,5 @@
 
+
 var idGen = 0;
 // delete task text function with button click
 async function deleteTaskButton(button) {

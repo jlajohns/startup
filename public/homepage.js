@@ -1,11 +1,8 @@
-class TaskManager {
-    constructor() {
-        this.AddTaskEvent = 'addTask';
-        this.CompleteTaskEvent = 'completeTask';
-        this.DeleteTaskEvent = 'deleteTask';
 
-        this.idGen = 0;
-    }
+
+var socket;
+const AddTaskEvent = 'addTask';
+const CompleteTaskEvent = 'completeTask';
 
 // delete task text function with button click
 async function deleteTaskButton(button) {
@@ -44,39 +41,74 @@ async function deleteTask(idObject) {
 }
 
 // Add task 
+function handleAddTask() {
+    var inputText = document.getElementById("taskInput").value;
+    console.log(inputText);
+    var randomID = Math.random().toString(36).substring(2,10);
 
+    addTask(inputText, randomID);
+    this.broadcastEvent(inputText, randomID, 'addTask');
+
+}
 
 
 
 // async function to add a task to active tasks
-async function addTask(text) {
-    try{
-    const response = await fetch('/api/activetasks', { 
-        method: 'POST', 
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify(text),
-    });
-    const newTask = await response
-    // localStorage.setItem('tasks', JSON.stringify(newTask));
-} catch (error) {
-    console.log("Error adding task");
-    console.log(error);
-}
-// let other players know a task has been added 
-this.broadcastEvent(this.getUserName(), AddTaskEvent, {});
+async function addTask(text, randomID) {
+    let newTask = {
+        text: text,
+        id: randomID,
+    }
+    try {
+        const response = await fetch('/api/activetasks', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newTask),
+        });
+        const resp = await response
+        // localStorage.setItem('tasks', JSON.stringify(newTask));
+    } catch (error) {
+        console.log("Error adding task");
+        console.log(error);
+    }
+
+    addTaskHTML(text, randomID);
+    // let other players know a task has been added 
 }
 
-getUserName() {
-    return localStorage.getItem('userName') ?? 'Mystery player';
-  }
+async function getActiveTasks() {
+    try {
+        const response = await fetch('/api/activetasks', {
+            method: 'GET',
+            headers: { 'content-type': 'application/json' },
+        });
+        const tasks = await response.json();
+
+        tasks.forEach(task => {
+            addTaskHTML(task.text, task.id);
+        });
+        
+    } catch (error) {
+        console.log("Error adding task");
+        console.log(error);
+    }
+}
+
+function addTaskHTML(text, randomID) {
+    const cs260taskList = document.querySelector('#cs260List');
+
+    console.log("Adding task. . .")
+
+    cs260taskList.innerHTML = `<li id=${randomID}><button class="deleteButton" onclick="deleteTaskButton(this)">Delete</button><button class="completebutton" onclick="completeTask(this)">Complete</button>${text}</li>` + cs260taskList.innerHTML;
+}
 
 
 // async function to add a task to task history
 async function addTaskToHistory(task) {
-        try{
-        const response = await fetch('/api/taskhistory', { 
-            method: 'POST', 
-            headers: {'content-type': 'application/json'},
+    try {
+        const response = await fetch('/api/taskhistory', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(task),
         });
         const newTask = await response
@@ -100,6 +132,7 @@ function completeTask(button) {
     }
 
     var idObject = {
+        text: liText,
         id: li.id
     }
 
@@ -113,69 +146,78 @@ function completeTask(button) {
         date: "2/29/24"
     }
     addTaskToHistory(newTask);
+    this.broadcastEvent("idk", li.id, 'completeTask');
+}
+
+function deleteTaskHTML(id) {
+    let deletedTask = document.getElementById(id);
+    if (deletedTask) {
+        const parentOfTask = deletedTask.parentNode;
+        parentOfTask.removeChild(deletedTask);
+    }
 }
 
 
 // Simulate tasks that will come over WebSocket
-setInterval(() => {
-    const cs260taskList = document.querySelector('#cs260List');
-    let tasks = [];
-    const TasksText = localStorage.getItem("CS260exampleTasks");
-    // console.log(TasksText);
-    if (TasksText) {
-        tasks = JSON.parse(TasksText);
-    }
+// setInterval(() => {
+//     const cs260taskList = document.querySelector('#cs260List');
+//     let tasks = [];
+//     const TasksText = localStorage.getItem("CS260exampleTasks");
+//     // console.log(TasksText);
+//     if (TasksText) {
+//         tasks = JSON.parse(TasksText);
+//     }
 
-    var randomTaskNumber = Math.floor(Math.random() * tasks.length);
+//     var randomTaskNumber = Math.floor(Math.random() * tasks.length);
 
-    randomTaskText = tasks[randomTaskNumber];
+//     randomTaskText = tasks[randomTaskNumber];
 
 
-    var randomID = idGen;
-    var taskObject = {
-        id: randomID,
-        text: tasks[randomTaskNumber]
-    }
-    
-    idGen++;
+//     var randomID = idGen;
+//     var taskObject = {
+//         id: randomID,
+//         text: tasks[randomTaskNumber]
+//     }
 
-    // console.log("Adding task. . .")
+//     idGen++;
 
-    addTask(taskObject);
+//     // console.log("Adding task. . .")
 
-    cs260taskList.innerHTML = `<li id=${randomID}><button class="deleteButton" onclick="deleteTaskButton(this)">Delete</button><button class="completebutton" onclick="completeTask(this)">Complete</button>${randomTaskText}</li>` + cs260taskList.innerHTML;
+//     addTask(taskObject);
 
-}, 3000)
+//     cs260taskList.innerHTML = `<li id=${randomID}><button class="deleteButton" onclick="deleteTaskButton(this)">Delete</button><button class="completebutton" onclick="completeTask(this)">Complete</button>${randomTaskText}</li>` + cs260taskList.innerHTML;
+
+// }, 3000)
 
 
 // Simulate tasks that will come over WebSocket
-setInterval(() => {
-    const neuroTaskList = document.querySelector('#neuroList');
-    let tasks = [];
-    const TasksText = localStorage.getItem("NeuroexampleTasks");
+// setInterval(() => {
+//     const neuroTaskList = document.querySelector('#neuroList');
+//     let tasks = [];
+//     const TasksText = localStorage.getItem("NeuroexampleTasks");
 
-    if (TasksText) {
-        tasks = JSON.parse(TasksText);
-    }
+//     if (TasksText) {
+//         tasks = JSON.parse(TasksText);
+//     }
 
-    var randomTaskNumber = Math.floor(Math.random() * tasks.length);
+//     var randomTaskNumber = Math.floor(Math.random() * tasks.length);
 
 
-    const newListItem = document.createElement('li');
+//     const newListItem = document.createElement('li');
 
-    randomTaskText = tasks[randomTaskNumber];
+//     randomTaskText = tasks[randomTaskNumber];
 
-    var randomID = idGen;
-    var taskObject = {
-        id: randomID,
-        text: tasks[randomTaskNumber]
-    }
+//     var randomID = idGen;
+//     var taskObject = {
+//         id: randomID,
+//         text: tasks[randomTaskNumber]
+//     }
 
-    idGen++;
-    addTask(taskObject);
-    neuroTaskList.innerHTML = `<li id=${randomID}><button class="deleteButton" onclick="deleteTaskButton(this)">Delete</button><button class="completebutton" onclick="completeTask(this)">Complete</button>${randomTaskText}</li>` + neuroTaskList.innerHTML;
+//     idGen++;
+//     addTask(taskObject);
+//     neuroTaskList.innerHTML = `<li id=${randomID}><button class="deleteButton" onclick="deleteTaskButton(this)">Delete</button><button class="completebutton" onclick="completeTask(this)">Complete</button>${randomTaskText}</li>` + neuroTaskList.innerHTML;
 
-}, 5000)
+// }, 5000)
 
 // third party socket
 
@@ -185,34 +227,42 @@ async function ThirdParty() {
     console.log(time);
     const dateP = document.querySelector("#currentdate");
     dateP.innerText = time.datetime;
-  }
+}
 
-  configureWebSocket() {
+function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-    this.socket.onmessage = async (event) => {
+    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    socket.onopen = (event) => {
+        console.log("Connected to websocketServer");
+    };
+    socket.onclose = (event) => {
+        console.log("Disconnected from websocketServer");
+    };
+    socket.onmessage = async (event) => {
         const msg = JSON.parse(await event.data.text());
+        console.log("Received msg");
+        console.log(msg)
         if (msg.type === CompleteTaskEvent) {
-            this.displayMsg ('user', msg.from, `completed ${msg.value.evnt}`);
+            deleteTaskHTML(msg.id);
         } else if (msg.type === AddTaskEvent) {
-            this.displayMsg('user', msg.from, `added a task`);
+            console.log("Received AddTaskEvent");
+            addTaskHTML(msg.text, msg.id);
         }
     };
 
-  }
-
-  displayMsg(cls, from, evnt) {
-    const eventText = document.querySelector('#cs260List');
-    eventText.innerHTML =   `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
-  }
-
-
-  broadcastEvent(from, type, value) {
-    const event = {
-      from: from,
-      type: type,
-      value: value,
-    };
-    this.socket.send(JSON.stringify(event));
-  }
 }
+
+
+function broadcastEvent(text, id, type) {
+    const task = {
+        text: text,
+        id: id,
+        type: type,
+    };
+    this.socket.send(JSON.stringify(task));
+}
+
+configureWebSocket();
+getActiveTasks();
+
+

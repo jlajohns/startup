@@ -1,6 +1,12 @@
+class TaskManager {
+    constructor() {
+        this.AddTaskEvent = 'addTask';
+        this.CompleteTaskEvent = 'completeTask';
+        this.DeleteTaskEvent = 'deleteTask';
 
+        this.idGen = 0;
+    }
 
-var idGen = 0;
 // delete task text function with button click
 async function deleteTaskButton(button) {
     console.log("Deleting task!");
@@ -37,6 +43,8 @@ async function deleteTask(idObject) {
 
 }
 
+// Add task 
+
 
 
 
@@ -53,7 +61,15 @@ async function addTask(text) {
 } catch (error) {
     console.log("Error adding task");
     console.log(error);
-}}
+}
+// let other players know a task has been added 
+this.broadcastEvent(this.getUserName(), AddTaskEvent, {});
+}
+
+getUserName() {
+    return localStorage.getItem('userName') ?? 'Mystery player';
+  }
+
 
 // async function to add a task to task history
 async function addTaskToHistory(task) {
@@ -170,3 +186,33 @@ async function ThirdParty() {
     const dateP = document.querySelector("#currentdate");
     dateP.innerText = time.datetime;
   }
+
+  configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onmessage = async (event) => {
+        const msg = JSON.parse(await event.data.text());
+        if (msg.type === CompleteTaskEvent) {
+            this.displayMsg ('user', msg.from, `completed ${msg.value.evnt}`);
+        } else if (msg.type === AddTaskEvent) {
+            this.displayMsg('user', msg.from, `added a task`);
+        }
+    };
+
+  }
+
+  displayMsg(cls, from, evnt) {
+    const eventText = document.querySelector('#cs260List');
+    eventText.innerHTML =   `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+  }
+
+
+  broadcastEvent(from, type, value) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+  }
+}

@@ -58,3 +58,13 @@ The following technology will be used in the I'm On It application.
 - Front end calls third party service endpoints (button for date on homepage)
 - backend provides service endpoints for (add task, delete task, complete task, taskhistory)
 - Frontend calls service endpoints (I did this on the appropriate js files) 
+
+## Startup Websocket Assignment
+- Simon Websocket is deployed to my environemtn on simon.jascinda.click
+- A link to my Github is displayed at the bottom of my application home page 
+- The notes in this file are all up to date 
+- There are commits spread throughout the week 
+- The backend of my application listens for websocket connection 
+- The frontend makes the websocket connection
+- Data is sent over websocket (tasks that are added, deleted, or completed are updated for everyone)
+- Websocket data displayed in the application interface (the application shows up to date location of tasks)
